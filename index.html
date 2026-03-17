@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curry Cuts</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:radial-gradient(circle at 20% 30%, #001a0f, #000 60%);
+color:white;
+overflow-x:hidden;
+animation:bgMove 12s infinite alternate;
+}
+
+@keyframes bgMove{
+from{background-position:0 0}
+to{background-position:100% 100%}
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 60px;
+display:flex;
+justify-content:space-between;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(12px);
+z-index:1000;
+}
+
+nav h1{
+color:orange;
+letter-spacing:4px;
+font-size:24px;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav li{
+cursor:pointer;
+transition:.3s;
+color:#ccc;
+}
+
+nav li:hover{
+color:orange;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h2{
+font-size:80px;
+background:linear-gradient(90deg,orange,green,royalblue);
+-webkit-background-clip:text;
+color:transparent;
+animation:slideUp 1.5s ease;
+}
+
+.hero p{
+margin-top:20px;
+color:#aaa;
+}
+
+.btn{
+margin-top:30px;
+padding:15px 40px;
+border:none;
+background:linear-gradient(90deg,orange,green);
+color:black;
+font-weight:600;
+cursor:pointer;
+transition:.4s;
+border-radius:10px;
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px orange;
+}
+
+.section{
+padding:120px 80px;
+}
+
+.title{
+font-size:42px;
+margin-bottom:50px;
+color:orange;
+text-align:center;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+
+.card{
+background:#111;
+padding:25px;
+border-radius:20px;
+transition:.5s;
+position:relative;
+overflow:hidden;
+}
+
+.card:before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,green,transparent);
+top:-100%;
+left:0;
+transition:.6s;
+}
+
+.card:hover:before{
+top:100%;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 25px green;
+}
+
+.card img{
+width:100%;
+border-radius:12px;
+margin-bottom:15px;
+}
+
+.food:hover{
+box-shadow:0 0 30px royalblue;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.gallery div{
+height:250px;
+background:linear-gradient(120deg,#111,royalblue);
+border-radius:20px;
+transition:.6s;
+}
+
+.gallery div:hover{
+transform:scale(1.05) rotate(1deg);
+}
+
+.money{
+font-size:70px;
+font-weight:700;
+background:linear-gradient(90deg,orange,green,royalblue);
+-webkit-background-clip:text;
+color:transparent;
+text-align:center;
+margin-top:20px;
+}
+
+.rev-sub{
+text-align:center;
+color:#888;
+margin-top:10px;
+}
+
+footer{
+padding:60px;
+text-align:center;
+background:#050505;
+color:#777;
+}
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.pole{
+position:fixed;
+right:30px;
+bottom:30px;
+width:20px;
+height:120px;
+background:linear-gradient(45deg,red,white,blue);
+background-size:40px 40px;
+animation:poleSpin 2s linear infinite;
+border-radius:20px;
+opacity:.6;
+}
+
+@keyframes poleSpin{
+from{background-position:0 0}
+to{background-position:0 80px}
+}
+
+@keyframes slideUp{
+from{transform:translateY(80px);opacity:0}
+to{transform:translateY(0);opacity:1}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="pole"></div>
+
+<nav>
+<h1>CURRY CUTS</h1>
+<ul>
+<li>Home</li>
+<li>Services</li>
+<li>Merch</li>
+<li>Food</li>
+<li>Styles</li>
+</ul>
+</nav>
+
+<section class="hero">
+<h2>Stay Sharp.</h2>
+<p>Where fades meet flavor.</p>
+<button class="btn">Book Now</button>
+</section>
+
+<section class="section reveal">
+<h2 class="title">Shop Revenue</h2>
+<div class="money">$ <span id="revenue">128,450</span></div>
+<p class="rev-sub">Growing every second 💈</p>
+</section>
+
+<section class="section reveal">
+<div class="title">Hair Services</div>
+<div class="products">
+
+<div class="card">
+<h3>Premium Fade</h3>
+<p>$35 • 30 min</p>
+</div>
+
+<div class="card">
+<h3>Beard Sculpt</h3>
+<p>$20 • 20 min</p>
+</div>
+
+<div class="card">
+<h3>Full Transformation</h3>
+<p>$60 • 60 min</p>
+</div>
+
+<div class="card">
+<h3>Student Cut</h3>
+<p>$25 • 25 min</p>
+</div>
+
+</div>
+</section>
+
+<section class="section reveal">
+<div class="title">Merch Drops</div>
+<div class="products">
+
+<div class="card">
+<img src="https://picsum.photos/300/200?1">
+<h3>Street Fade Hoodie</h3>
+<p>$49</p>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/300/200?2">
+<h3>Stay Sharp Tee</h3>
+<p>$29</p>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/300/200?3">
+<h3>Barber Cap</h3>
+<p>$19</p>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/300/200?4">
+<h3>Fade Brush</h3>
+<p>$15</p>
+</div>
+
+</div>
+</section>
+
+<section class="section reveal">
+<div class="title">Signature Curries</div>
+<div class="products">
+
+<div class="card food">
+<img src="https://picsum.photos/300/200?curry1">
+<h3>Butter Chicken Curry</h3>
+<p>Barber's Special</p>
+</div>
+
+<div class="card food">
+<img src="https://picsum.photos/300/200?curry2">
+<h3>Street Masala Bowl</h3>
+<p>Spicy Fade Fuel</p>
+</div>
+
+<div class="card food">
+<img src="https://picsum.photos/300/200?curry3">
+<h3>Green Curry Deluxe</h3>
+<p>Customer Favorite</p>
+</div>
+
+<div class="card food">
+<img src="https://picsum.photos/300/200?curry4">
+<h3>Tandoori Wrap Plate</h3>
+<p>Lunch Combo</p>
+</div>
+
+</div>
+</section>
+
+<section class="section reveal">
+<div class="title">Transformation Energy</div>
+<div class="gallery">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</section>
+
+<footer>
+© Curry Cuts 2026 — Confidence & Curry Included.
+</footer>
+
+<script>
+
+let revenue = 128450
+
+setInterval(()=>{
+revenue += Math.floor(Math.random()*40)
+document.getElementById("revenue").innerText = revenue.toLocaleString()
+},120)
+
+window.addEventListener('scroll',()=>{
+let reveals=document.querySelectorAll('.reveal')
+reveals.forEach(el=>{
+let windowHeight=window.innerHeight
+let elementTop=el.getBoundingClientRect().top
+let revealPoint=120
+if(elementTop<windowHeight-revealPoint){
+el.classList.add('active')
+}
+})
+})
+
+</script>
+
+</body>
+</html>
